@@ -25,15 +25,15 @@ The strongest illustrative equal-weight composite (Lumber, Wheat, and Corn) prod
 * 0.73 Sharpe ratio
 * -16.30% maximum drawdown
 
-from 1978–2023 under the audited primary specification.
+from 1978–2023 under the audited primary specification. This result is presented as an exploratory research finding, not as a live trading strategy.
 
 ## Repository Contents
 
-* Audited R implementation
-* Submitted thesis PDF
-* Portfolio output tables
-* Robustness checks
-* Figures and visualizations
+Audited R implementation
+Portfolio output tables
+Robustness checks
+Figures and visualizations
+Cleaned commodity returns dataset
 
 ## Development Note
 
