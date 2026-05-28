@@ -6,7 +6,7 @@
 #          transaction-cost, sample, and statistical assumptions explicit.
 # ==============================================================================
 
-# 1. LOAD REQUIRED LIBRARIES ---------------------------------------------------
+# 1. LOAD REQUIRED LIBRARIES --------------------------------------------------- 
 required_packages <- c("readr", "dplyr", "lubridate", "tidyr", "ggplot2", "knitr", "purrr", "scales")
 missing_packages <- required_packages[!vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)]
 if (length(missing_packages) > 0) {
