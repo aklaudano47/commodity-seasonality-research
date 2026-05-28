@@ -23,16 +23,18 @@ library(purrr)
 library(scales)
 
 # 2. LOAD AND VALIDATE DATA ----------------------------------------------------
-# Edit this path if the CSV is stored elsewhere.
-candidate_files <- c("alex_finaldata.csv", "alex_finaldata(1).csv")
-data_file <- candidate_files[file.exists(candidate_files)][1]
-if (is.na(data_file)) {
-  stop("Dataset not found. Place alex_finaldata.csv in the working directory or edit candidate_files.")
+
+data_file <- "data/commodity_returns_dataset.csv"
+
+if (!file.exists(data_file)) {
+  stop("Dataset not found. Place commodity_returns_dataset.csv inside the /data folder.")
 }
 
 full_data <- read_csv(data_file, show_col_types = FALSE)
+
 required_columns <- c("Asset", "Date_Year", "Date_Month", "Quarter", "Monthly_Return")
 missing_columns <- setdiff(required_columns, names(full_data))
+
 if (length(missing_columns) > 0) {
   stop("Dataset is missing required columns: ", paste(missing_columns, collapse = ", "))
 }
@@ -44,9 +46,17 @@ full_data <- full_data %>%
   ) %>%
   arrange(Asset, Date)
 
-if (any(is.na(full_data$Monthly_Return))) stop("Monthly_Return contains missing values; resolve before analysis.")
-if (anyDuplicated(full_data[c("Asset", "Date")]) > 0) stop("Duplicate Asset-Date observations detected.")
-if (any(full_data$Quarter != full_data$Expected_Quarter)) stop("Quarter labels do not match Date_Month.")
+if (any(is.na(full_data$Monthly_Return))) {
+  stop("Monthly_Return contains missing values; resolve before analysis.")
+}
+
+if (anyDuplicated(full_data[c("Asset", "Date")]) > 0) {
+  stop("Duplicate Asset-Date observations detected.")
+}
+
+if (any(full_data$Quarter != full_data$Expected_Quarter)) {
+  stop("Quarter labels do not match Date_Month.")
+}
 
 # 3. RESEARCH CONFIGURATION ---------------------------------------------------
 CFG <- list(
