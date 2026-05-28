@@ -1,0 +1,5 @@
+Scenario,Ann_Return,Max_DD,Sharpe
+Original cost implementation,5.9662,-16.3001,0.6181
+65 bps once per selected quarter,7.3282,-16.3001,0.7324
+65 bps per entry and exit,6.6429,-16.3001,0.6743
+Quarter-compounded signal; 65 bps once,6.5849,-18.0403,0.6876
